@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS "Department Employees"
     employeeID INTEGER NOT NULL,
     departmentID VARCHAR(4) NOT NULL,
     inDeptFromDate DATE NOT NULL,
-    inDeptUntilDate DATE NOT NULL    
+    inDeptUntilDate DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "All Employees"
@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS "Titles"
     titleFromDate DATE NOT NULL,
     titleUntilDate DATE NOT NULL    
 );
-
 
 -- Create FKs
     
