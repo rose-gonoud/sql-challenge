@@ -1,14 +1,14 @@
 -- Create schemas
 
 -- Create tables
-CREATE TABLE IF NOT EXISTS Departments
+CREATE TABLE IF NOT EXISTS departments
 (
     primary_key VARCHAR(4) NOT NULL,
     deptName VARCHAR(20) NOT NULL,
     PRIMARY KEY(primary_key)
 );
 
-CREATE TABLE IF NOT EXISTS "Department Employees"
+CREATE TABLE IF NOT EXISTS departmentEmployees
 (
     employeeID INTEGER NOT NULL,
     departmentID VARCHAR(4) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "Department Employees"
     inDeptUntilDate DATE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "All Employees"
+CREATE TABLE IF NOT EXISTS allEmployees
 (
     primary_key INTEGER NOT NULL,
     birthday DATE NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS "All Employees"
     PRIMARY KEY(primary_key)
 );
 
-CREATE TABLE IF NOT EXISTS "Department Managers"
+CREATE TABLE IF NOT EXISTS departmentManagers
 (
     departmentID VARCHAR(4) NOT NULL,
     employeeID INTEGER NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS "Department Managers"
     managerUntilDate DATE NOT NULL    
 );
 
-CREATE TABLE IF NOT EXISTS "Salaries"
+CREATE TABLE IF NOT EXISTS salaries
 (
     employeeID INTEGER NOT NULL,
     salary INTEGER NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS "Salaries"
     salaryUntilDate DATE NOT NULL    
 );
 
-CREATE TABLE IF NOT EXISTS "Titles"
+CREATE TABLE IF NOT EXISTS titles
 (
     employeeID INTEGER NOT NULL,
     title VARCHAR(20) NOT NULL,
@@ -53,41 +53,39 @@ CREATE TABLE IF NOT EXISTS "Titles"
 
 -- Create FKs
     
-ALTER TABLE "Salaries"
+ALTER TABLE salaries
     ADD    FOREIGN KEY (employeeID)
-    REFERENCES "All Employees"(primary_key)
+    REFERENCES allEmployees(primary_key)
     MATCH SIMPLE
 ;
     
-ALTER TABLE "Titles"
+ALTER TABLE titles
     ADD    FOREIGN KEY (employeeID)
-    REFERENCES "All Employees"(primary_key)
+    REFERENCES allEmployees(primary_key)
     MATCH SIMPLE
 ;
     
-ALTER TABLE "Department Managers"
+ALTER TABLE departmentManagers
     ADD    FOREIGN KEY (employeeID)
-    REFERENCES "All Employees"(primary_key)
+    REFERENCES allEmployees(primary_key)
     MATCH SIMPLE
 ;
     
-ALTER TABLE "Department Employees"
+ALTER TABLE departmentEmployees
     ADD    FOREIGN KEY (employeeID)
-    REFERENCES "All Employees"(primary_key)
+    REFERENCES allEmployees(primary_key)
     MATCH SIMPLE
 ;
     
-ALTER TABLE "Department Managers"
+ALTER TABLE departmentManagers
     ADD    FOREIGN KEY (departmentID)
-    REFERENCES Departments(primary_key)
+    REFERENCES departments(primary_key)
     MATCH SIMPLE
 ;
     
-ALTER TABLE "Department Employees"
+ALTER TABLE departmentEmployees
     ADD    FOREIGN KEY (departmentID)
-    REFERENCES Departments(primary_key)
+    REFERENCES departments(primary_key)
     MATCH SIMPLE
 ;
-    
-
 -- Create Indexes
