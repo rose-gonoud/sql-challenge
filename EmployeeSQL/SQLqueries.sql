@@ -27,11 +27,9 @@ SELECT allEmployees.primary_key, departmentemployees.departmentid, departments.d
 		on departmentemployees.departmentid = departments.primary_key;
 
 -- List all employees whose first name is "Hercules" and last names begin with "B."
-~~~~~~~~~~~~~~~~~~~~~~~~~
--- not working? 
 SELECT firstname, lastname
 	FROM allEmployees
-	WHERE firstname = 'Hercules' AND lastname = 'B%'
+	WHERE firstname = 'Hercules' AND lastname LIKE 'B%'
 
 -- List all employees in the Sales department, including their employee number, last name, first name, and department name.
 SELECT allEmployees.primary_key, allEmployees.firstname, allEmployees.lastname, departmentemployees.departmentid, departments.deptname
